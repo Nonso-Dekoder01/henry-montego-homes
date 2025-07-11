@@ -4,13 +4,22 @@ import { NavLink } from "react-router-dom";
 import { LuUsers, LuHouse, LuMenu } from "react-icons/lu";
 import { MdOutlineMail, MdOutlineCall } from "react-icons/md";
 import { HiX } from "react-icons/hi";
+import { GoChevronDown } from 'react-icons/go';
 
 
 const leftLinks = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
     { name: 'Projects', path: '/projects' },
-    { name: 'Pages', path: '/pages' },
+    {
+      name: 'Companies',
+      path: '/pages',
+      icon: <GoChevronDown />,
+      subLinks: [
+        { name: 'HouseOne', path: '/HouseOne' },
+        { name: 'YOU & I', path: '/YOU&I' },
+      ],
+    },
   ];
   
   const rightLinks = [
@@ -28,7 +37,7 @@ const leftLinks = [
 
 const Navbar = () => {
 
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className='w-screen h-30  md:px-20 lg:px-28 bg-black'>
@@ -53,22 +62,47 @@ const Navbar = () => {
                     </div>
                  </div>
                 <div className='w-full h-11/12 lg:h-7/12 flex justify-end lg:justify-between px-5 items-center'>
-                    <div className='hidden lg:flex items-start gap-10'>
-                    {leftLinks.map((link) => (
-                        <NavLink
-                        key={link.path}
-                        to={link.path}
-                        className={({ isActive }) =>
-                            `relative px-1 pb-1 text-sm no-underline hover:decoration-none transition-all duration-200 ${
-                            isActive
-                                ? 'text-white font-medium text-xs pb-1.5 after:content-[""] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:w-1 after:h-1 after:rounded-full after:bg-[#FF8C00]'
-                                : 'text-white font-normal text-xs hover:!text-[#FF8C00]'
-                            }`
-                        }
-                        >
-                        {link.name}
-                        </NavLink>
-                    ))}
+                    <div className="hidden lg:flex items-start gap-10">
+                      {leftLinks.map((link) =>
+                        link.subLinks ? (
+                          <div key={link.path} className="relative group">
+                            <div
+                              className="flex items-center gap-1.5 px-1 pb-1 text-white font-normal text-xs cursor-pointer transition hover:text-[#FF8C00]"
+                            >
+                              {link.name}
+                              <span className="text-xs text-[#FF8C00]">{link.icon}</span>
+                            </div>
+
+                            {/* Dropdown */}
+                            <div className="absolute top-full left-0 mt-2 py-5 hidden group-hover:flex flex-col gap-3 bg-black border border-gray-700 rounded-lg shadow-lg z-50 min-w-[160px]">
+                              {link.subLinks.map((sub) => (
+                                <NavLink
+                                  key={sub.path}
+                                  to={sub.path}
+                                  className="px-4 py-2 text-sm text-white hover:bg-[#FF8C00] hover:text-white transition"
+                                >
+                                  {sub.name}
+                                </NavLink>
+                              ))}
+                            </div>
+                          </div>
+                        ) : (
+                          <NavLink
+                            key={link.path}
+                            to={link.path}
+                            className={({ isActive }) =>
+                              `relative flex items-center gap-1.5 px-1 pb-1 text-xs no-underline transition duration-200 ${
+                                isActive
+                                  ? 'text-white font-medium after:content-[""] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:w-1 after:h-1 after:rounded-full after:bg-[#FF8C00]'
+                                  : 'text-white font-normal hover:text-[#FF8C00]'
+                              }`
+                            }
+                          >
+                            {link.name}
+                            {link.icon}
+                          </NavLink>
+                        )
+                      )}
                     </div>
                     <div className='hidden lg:flex items-center gap-10'>
                     {rightLinks.map((link) => 
