@@ -1,4 +1,4 @@
-import React, { useState }  from 'react'
+import React, { useEffect, useState }  from 'react'
 import logo from '../assets/Logo.png'
 import { NavLink } from "react-router-dom";
 import { LuUsers, LuHouse, LuMenu } from "react-icons/lu";
@@ -35,9 +35,23 @@ const leftLinks = [
   ];
   
 
+
+
 const Navbar = () => {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    useEffect(() => {
+  if (mobileMenuOpen) {
+    document.body.classList.add('overflow-hidden');
+  } else {
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  return () => {
+    document.body.classList.remove('overflow-hidden');
+  };
+}, [mobileMenuOpen]);
 
   return (
     <div className='w-screen h-30  md:px-20 lg:px-28 bg-black'>
@@ -143,7 +157,7 @@ const Navbar = () => {
             </div>
         </div>
                     {mobileMenuOpen && (
-                        <div className="lg:hidden flex flex-col bg-black gap-14 w-full h-auto p-10 md:px-0 md:py-10 items-start">
+                        <div className="lg:hidden flex flex-col top-28 left-0 z-[9999] !bg-black gap-14 w-screen h-screen fixed overflow-y-auto p-10 md:px-24 md:py-24 items-start">
                         {[...leftLinks, ...rightLinks, ...upperLinks,].map((link) => (
                           <NavLink
                             key={link.path}

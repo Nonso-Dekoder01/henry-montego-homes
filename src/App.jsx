@@ -9,6 +9,7 @@ import HouseOne from './components/HouseOne';
 import YouI from './components/YouI';
 import ContactUs from './components/ContactUs';
 import Marquee from './components/Marquee';
+import Footer from './components/Footer';
 
 
 
@@ -51,6 +52,7 @@ const App = () => {
         <Route path="/YOU&I" element={<YouI/>} />
         <Route path="/contact" element={<ContactUs/>} />
       </Routes>
+      <Footer/>
     </div>
   )
 }
