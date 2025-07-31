@@ -30,8 +30,8 @@ const leftLinks = [
   const upperLinks = [
     { name: '+234 901-200-1900', path: '/whatsapp', icon: <MdOutlineCall /> },
     { name: 'info@henrymontegohomes.com', path: '/email', icon: <MdOutlineMail /> },
-    { name: 'HouseOne', path: '/email', icon: <LuHouse /> },
-    { name: 'YOU & I', path: '/email', icon: <LuUsers /> },
+    { name: 'HouseOne', path: '/houseone', icon: <LuHouse /> },
+    { name: 'YOU & I', path: '/you&i', icon: <LuUsers /> },
   ];
   
 

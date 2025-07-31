@@ -12,7 +12,7 @@ import backgroundImage5 from '../assets/projectsimg5.png'
 import { FaFacebookF, FaLinkedinIn, FaRegHandshake, FaStar, FaStarHalfAlt } from 'react-icons/fa'
 import { GoArrowUpRight } from 'react-icons/go'
 import { IoLogoInstagram } from 'react-icons/io'
-import { RiBuilding2Fill, RiBuildingLine, RiCustomerService2Fill } from 'react-icons/ri'
+import { RiBuilding2Fill, RiBuildingLine, RiCustomerService2Fill, RiTwitterXFill } from 'react-icons/ri'
 import { GiBuyCard } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
 import { BiSolidBuildingHouse } from 'react-icons/bi'
@@ -102,7 +102,7 @@ useEffect(() => {
           <div className='hidden lg:flex w-auto mr-14 h-auto flex-col gap-8 items-center'>
             <div className='w-[0.3px] h-72 bg-white opacity-30'></div>
             <div className='flex flex-col gap-4'>
-              <FaFacebookF size={32}/>
+              <RiTwitterXFill size={32}/>
               <IoLogoInstagram size={36}/>
               <FaLinkedinIn size={32}/>
             </div>
